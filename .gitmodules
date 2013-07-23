@@ -1,0 +1,6 @@
+[submodule "vendor/assets/javascripts/ember.js"]
+	path = vendor/assets/javascripts/ember.js
+	url = https://github.com/emberjs/ember.js
+[submodule "vendor/assets/javascripts/emberdata"]
+	path = vendor/assets/javascripts/emberdata
+	url = https://github.com/emberjs/data
