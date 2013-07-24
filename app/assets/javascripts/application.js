@@ -17,6 +17,8 @@
 //= require ember-data
 //= require_self
 //= require fluidic_space
-FluidicSpace = Ember.Application.create();
+FluidicSpace = Ember.Application.create({
+  LOG_TRANSITIONS: true
+});
 
 //= require_tree .
