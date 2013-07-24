@@ -2,5 +2,6 @@
 <ul>
   {{#each controller}}
     <li>{{title}}</li>
+    <td><input type="submit" class="delete" value="delete" {{action deleteHabit habit}} /></td>
   {{/each}}
 </ul>
