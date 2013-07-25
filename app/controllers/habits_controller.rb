@@ -2,7 +2,13 @@ class HabitsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Habit.all
+    if params[:week_from]
+      start_date = params[:week_from].to_date
+      end_date = start_date + 7
+      respond_with Habit.where(date: start_date..end_date)
+    else
+      respond_with Habit.where(params.slice(:title, :state, :date, :user))
+    end
   end
 
   def show
@@ -18,8 +24,9 @@ class HabitsController < ApplicationController
   end
 
   def create
-    binding.pry
-    habit = Habit.new(params[:habit])
+    create_params = habit_params.dup
+    create_params["date"] = Time.zone.parse(habit_params["date"])
+    habit = Habit.new(create_params)
 
     if habit.save
       respond_with habit, status: :created, location: habit
@@ -43,5 +50,11 @@ class HabitsController < ApplicationController
     habit.destroy
 
     head :no_content
+  end
+
+  private
+
+  def habit_params
+    params.require(:habit).permit(:title, :state, :date, :user_id)
   end
 end

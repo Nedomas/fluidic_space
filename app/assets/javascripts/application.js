@@ -16,6 +16,7 @@
 //= require handlebars
 //= require ember
 //= require ember-data
+//= require moment.min
 //= require_self
 //= require fluidic_space
 FluidicSpace = Ember.Application.create({

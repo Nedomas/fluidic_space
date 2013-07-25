@@ -1,9 +1,29 @@
 {{#linkTo 'habits.new' class='button'}}Add a habit{{/linkTo}}
-<ul>
-  {{#each controller}}
-    <li>{{title}}</li>
-    <li>{{date}}</li>
-    <li>{{user.username}}</li>
-  {{/each}}
-</ul>
-
+<table>
+  <thead>
+    <tr>
+      <th width='200'>Habit</th>
+      {{#each week}}
+        <th>{{this}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Habit</th>
+      <th width="200">Date</th>
+      <th width="200">{{today}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each controller}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{formattedDate}}</td>
+        <td><button {{action "destroyHabit" this}} class="small alert button">X</button></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

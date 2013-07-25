@@ -3,16 +3,33 @@ FluidicSpace.HabitsNewController = Ember.ArrayController.extend({
     var title = this.get('newTitle');
     if (!title.trim()) { return; }
 
-    // Create the new Todo model
-    var habit = this.get('store').createRecord(FluidicSpace.Habit, {
+    var habit = FluidicSpace.Habit.createRecord({
       title: title,
-      data: Date(),
-      state: true,
-      user_id: 1
+      state: false,
+      date: new Date(),
+      user: FluidicSpace.User.find(1)
     });
 
+    habit.save();
+    this.transitionToRoute('habits.index');
+  }
+});
 
-    // Save the new model
-    this.get('store').commit();
+FluidicSpace.HabitsIndexController = Ember.ArrayController.extend({
+  today: function() {
+    return moment(new Date()).format('YYYY-MM-DD');
+  }.property(),
+  week: function() {
+    today = new Date();
+    result = [];
+    for(i = 0; i <= 7; i++) {
+      var day = moment().add('days', i).format('DD');
+      result.push(day);
+    }
+    return result;
+  }.property(),
+  destroyHabit: function(habit) {
+    habit.deleteRecord();
+    habit.save();
   }
 });
