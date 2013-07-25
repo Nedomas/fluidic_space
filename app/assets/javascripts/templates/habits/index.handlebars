@@ -1,0 +1,9 @@
+{{#linkTo 'habits.new' class='button'}}Add a habit{{/linkTo}}
+<ul>
+  {{#each controller}}
+    <li>{{title}}</li>
+    <li>{{date}}</li>
+    <li>{{user.username}}</li>
+  {{/each}}
+</ul>
+

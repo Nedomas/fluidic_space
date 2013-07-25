@@ -8,6 +8,7 @@ module.exports = function(karma) {
       "vendor/bundle/gems/ember-source-1.0.0.rc6.2/dist/ember.js",
       "vendor/assets/javascripts/ember-data-latest.js",
       "bower_components/jquery-mockjax/jquery.mockjax.js",
+      "vendor/bundle/gems/zurb-foundation-4.3.1/js/foundation/foundation.js",
       "app/assets/javascripts/*.js",
       "app/assets/javascripts/**/*.js",
       "app/assets/javascripts/templates/*.handlebars",
@@ -28,7 +29,7 @@ module.exports = function(karma) {
       ],
 
     preprocessors: {
-      "app/javascriptes/templates/*.handlebars": 'ember'
+      "**/*.handlebars": 'ember'
     }
   });
 };

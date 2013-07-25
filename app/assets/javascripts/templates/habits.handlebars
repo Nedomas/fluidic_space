@@ -1,7 +1,6 @@
-<h2>Habits template</h2>
-<ul>
-  {{#each controller}}
-    <li>{{title}}</li>
-    <td><input type="submit" class="delete" value="delete" {{action deleteHabit habit}} /></td>
-  {{/each}}
-</ul>
+<div id='header' class='row'>
+  <h1 class='subheader'>Habits</h1>
+</div>
+<div id='content' class='row'>
+  {{outlet}}
+</div>

@@ -19,3 +19,5 @@ gem 'jquery-rails'
 
 # Use Foundation
 gem 'zurb-foundation'
+
+gem 'pry'
