@@ -3,16 +3,34 @@
   <thead>
     <tr>
       <th width='200'>Habit</th>
-      {{log weekHabits}}
-      {{#each weekday in FluidicSpace.saveMe}}
-        <th>{{weekday.day}}</th>
-        {{#each habit in weekday.habits}}
-          {{log habit.title}}
-        {{/each}}
+      {{showHabits}}
+      {{#each weekday in FluidicSpace.myWeekdays}}
+        <th>{{weekday}}</th>
       {{/each}}
     </tr>
+  <tbody>
+    {{#each habit in controller}}
+      <tr>
+        <td>
+          {{habit.title}}
+        </td>
+        {{#each weekday in FluidicSpace.myWeekdays}}
+          <td>
+            {{habit.findDay}}
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
   </thead>
 </table>
+        <!-- {{habit.zippedDays}} -->
+        <!-- {{#each day in habit.days}} -->
+        <!--   <td {{action "toggleDay" day}} class='alert&#45;box alert' style='margin: 0'> -->
+        <!--     {{day.state}} -->
+        <!--   </td> -->
+        <!-- {{/each}} -->
+
 <table>
   <thead>
     <tr>

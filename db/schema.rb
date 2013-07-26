@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723233134) do
+ActiveRecord::Schema.define(version: 20130726122906) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "days", force: true do |t|
+    t.date     "date"
+    t.boolean  "state"
+    t.integer  "habit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "days", ["habit_id"], name: "index_days_on_habit_id", using: :btree
 
   create_table "habits", force: true do |t|
     t.string   "title"

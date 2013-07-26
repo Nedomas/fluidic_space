@@ -2,6 +2,7 @@ FluidicSpace.Habit = DS.Model.extend({
   title: DS.attr('string'),
   state: DS.attr('boolean'),
   date: DS.attr('date'),
+  days: DS.hasMany('FluidicSpace.Day'),
   user: DS.belongsTo('FluidicSpace.User'),
 
   formattedDate: function() {

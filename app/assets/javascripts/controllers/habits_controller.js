@@ -15,52 +15,45 @@ FluidicSpace.HabitsNewController = Ember.ArrayController.extend({
   }
 });
 
+FluidicSpace.myWeekdays = [];
+
+FluidicSpace.DaysController = Ember.ArrayController.extend({
+
+});
+
 FluidicSpace.HabitsIndexController = Ember.ArrayController.extend({
   today: function() {
     return moment(new Date()).format('YYYY-MM-DD');
   }.property(),
 
-  hehe: function() {
-    var something;
-    debugger;
-    return true;
-  },
-  weekHabits: function(controller) {
+  showHabits: function() {
     var today = new Date();
-    var result = {};
 
     _(7).times(function(n) {
       var day = moment().add('days', n).format('DD');
-      result[day] = [];
+      FluidicSpace.myWeekdays.pushObject(day);
     });
 
     var habits = FluidicSpace.Habit.find();
-
     habits.forEach(function(habit) {
-      var weekday = moment(habit.get('date')).format('DD');
-      result[weekday].push(habit);
+      console.log(habit.days);
     });
-
-    _(7).times(function(n) {
-      var day = moment().add('days', n).format('DD');
-      FluidicSpace.saveMe.pushObject(FluidicSpace.Day.create({
-        day: day,
-        habits: result[day]
-      }));
-    });
-
   }.property(),
+  toggleDay: function(day) {
+
+    var oldState = day.get('state');
+    if (oldState) {
+      day.set('state', false);
+    } else {
+      day.set('state', true);
+    }
+
+    day.save();
+  },
 
   destroyHabit: function(habit) {
     habit.deleteRecord();
     habit.save();
   }
 
-});
-FluidicSpace.saveMe = [];
-
-FluidicSpace.Day = Ember.Object.extend({
-   init: function() {
-     this._super();
-   }
 });

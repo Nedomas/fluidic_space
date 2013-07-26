@@ -6,10 +6,15 @@ user = User.create(
   username: 'tester',
   password: 'testing'
 )
-Habit.create(
+habit = Habit.create(
   title: 'Meditation',
   state: false,
   date: Date.today,
   user_id: user.id
+)
+Day.create(
+  date: Date.today,
+  state: false,
+  habit_id: habit.id
 )
 puts "Complete"
