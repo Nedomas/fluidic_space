@@ -3,8 +3,12 @@
   <thead>
     <tr>
       <th width='200'>Habit</th>
-      {{#each week}}
-        <th>{{this}}</th>
+      {{log weekHabits}}
+      {{#each weekday in FluidicSpace.saveMe}}
+        <th>{{weekday.day}}</th>
+        {{#each habit in weekday.habits}}
+          {{log habit.title}}
+        {{/each}}
       {{/each}}
     </tr>
   </thead>

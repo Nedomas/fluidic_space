@@ -9,6 +9,9 @@ FluidicSpace.HabitsIndexRoute = Ember.Route.extend({
     var startDate = new Date;
     // Rails API matches week more here
     return FluidicSpace.Habit.find({ week_from: moment(startDate).format('YYYY-MM-DD') });
+  },
+  setupController: function(controller, model) {
+    controller.set('content', model);
   }
 });
 

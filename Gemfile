@@ -21,3 +21,4 @@ gem 'jquery-rails'
 gem 'zurb-foundation'
 
 gem 'pry'
+gem 'underscore-rails'
